@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -22,6 +22,7 @@ model User {
   password  String 
   firstname String?
   lastname  String?
+  todos     Todo[]
  
 }
 
@@ -31,4 +32,5 @@ model Todo {
   description  String
   done         Boolean @default(false)
   userId       Int 
+  user         User    @relation(fields: [userId], references: [id])
 }
